@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb0dcinj3d5r"]
+
+[ext_resource type="Script" path="res://scripts/controls/joystick_touch_pad.gd" id="1_f3j48"]
+[ext_resource type="Texture2D" uid="uid://ded2m23ho7b2r" path="res://assets/icons/circle_medium.png" id="2_afxe2"]
+[ext_resource type="Texture2D" uid="uid://csiqp25x3jmwm" path="res://assets/icons/circle_big.png" id="3_nq6c0"]
+
+[node name="joystick_touch_pad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f3j48")
+
+[node name="handle" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.576471)
+layout_mode = 0
+texture = ExtResource("2_afxe2")
+expand_mode = 1
+
+[node name="base" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 0
+texture = ExtResource("3_nq6c0")
+expand_mode = 1

@@ -1,0 +1,10 @@
+res://scenes/menus/main_menu.tscn
+res://resources/materials/grey_grid_triplanar.tres
+res://resources/materials/white_grid_triplanar.tres
+res://scenes/demos/first_person_demo.tscn
+res://scenes/demos/third_person_demo.tscn
+res://scenes/demos/top_down_demo.tscn
+res://scenes/demos/demo_stage.tscn
+res://scenes/controller_layouts/joystick_touch_pad.tscn
+res://scripts/controls/joystick_touch_pad.gd
+res://scripts/players/top_down_player.gd

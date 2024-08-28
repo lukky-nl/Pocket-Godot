@@ -1,0 +1,274 @@
+[gd_scene load_steps=14 format=3 uid="uid://i1yqcsa4fvkf"]
+
+[ext_resource type="Script" path="res://scripts/menu/menu_manager.gd" id="1_ojj8n"]
+[ext_resource type="Texture2D" uid="uid://cxc7obb7vba8g" path="res://assets/textures/menu/fade.png" id="2_llyri"]
+[ext_resource type="Texture2D" uid="uid://bbtf33xjoo1xa" path="res://assets/icons/godot_white.png" id="3_42ym1"]
+[ext_resource type="FontFile" uid="uid://ebrvfjajxb0j" path="res://assets/fonts/NewAmsterdam-Regular.ttf" id="4_5uuh1"]
+[ext_resource type="Texture2D" uid="uid://d0x11i1qchd7f" path="res://assets/icons/border.png" id="5_0odjy"]
+[ext_resource type="Texture2D" uid="uid://db1mqollvvn8m" path="res://assets/textures/grids/Dark/texture_06.png" id="5_fkjx0"]
+[ext_resource type="Script" path="res://scripts/menu/turn_table.gd" id="6_n5kma"]
+[ext_resource type="PackedScene" uid="uid://cigucnd46o66s" path="res://assets/models/phone/phone.glb" id="7_6y4ia"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vds6f"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_blqnh"]
+sky_material = SubResource("ProceduralSkyMaterial_vds6f")
+
+[sub_resource type="Environment" id="Environment_xh5kg"]
+background_mode = 2
+sky = SubResource("Sky_blqnh")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pdse2"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w5pw"]
+albedo_texture = ExtResource("5_fkjx0")
+uv1_triplanar = true
+
+[node name="world" type="Node3D"]
+
+[node name="env" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_xh5kg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="cam_pivot" type="Node3D" parent="stage"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.52, -0.055, 0.88)
+
+[node name="Camera3D" type="Camera3D" parent="stage/cam_pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 4, 6.9282)
+fov = 30.7
+
+[node name="floor" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(0.907777, 0, 0.419452, 0, 1, 0, -0.419452, 0, 0.907777, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pdse2")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5w5pw")
+
+[node name="phone" type="Node3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84938, 0.5, -0.905881)
+script = ExtResource("6_n5kma")
+
+[node name="phone" parent="stage/phone" instance=ExtResource("7_6y4ia")]
+transform = Transform3D(0.233928, 0.489056, 0, -0.489056, 0.233928, 0, 0, 0, 0.542124, 0, 0.512068, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41763, 3.88725, -0.954518)
+light_energy = 2.836
+shadow_enabled = true
+shadow_blur = 10.0
+omni_range = 37.1608
+
+[node name="menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ojj8n")
+
+[node name="background" type="TextureRect" parent="menu"]
+modulate = Color(1, 1, 1, 0.792157)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = -216.0
+offset_right = 1080.0
+offset_bottom = 216.0
+grow_vertical = 2
+texture = ExtResource("2_llyri")
+
+[node name="border_top_right" type="TextureRect" parent="menu"]
+modulate = Color(1, 1, 1, 0.52549)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+texture = ExtResource("5_0odjy")
+
+[node name="border_bottom_left" type="TextureRect" parent="menu"]
+modulate = Color(1, 1, 1, 0.52549)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+offset_right = 400.0
+grow_vertical = 0
+texture = ExtResource("5_0odjy")
+flip_h = true
+flip_v = true
+
+[node name="menu_margin" type="MarginContainer" parent="menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="main_menu" type="VBoxContainer" parent="menu/menu_margin"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="title_container" type="HBoxContainer" parent="menu/menu_margin/main_menu"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="title_icon" type="TextureRect" parent="menu/menu_margin/main_menu/title_container"]
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("3_42ym1")
+expand_mode = 2
+
+[node name="title" type="Label" parent="menu/menu_margin/main_menu/title_container"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 100
+text = "Pocket Godot"
+
+[node name="button_list_margin" type="MarginContainer" parent="menu/menu_margin/main_menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 55
+
+[node name="button_list" type="VBoxContainer" parent="menu/menu_margin/main_menu/button_list_margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="fps_demo_button" type="Button" parent="menu/menu_margin/main_menu/button_list_margin/button_list"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 55
+text = "First Person Demo"
+flat = true
+alignment = 0
+
+[node name="tp_demo_button" type="Button" parent="menu/menu_margin/main_menu/button_list_margin/button_list"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 55
+text = "Third Person Demo "
+flat = true
+alignment = 0
+
+[node name="td_demo_button" type="Button" parent="menu/menu_margin/main_menu/button_list_margin/button_list"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 55
+text = "Top Down Demo"
+flat = true
+alignment = 0
+
+[node name="about_button" type="Button" parent="menu/menu_margin/main_menu/button_list_margin/button_list"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 55
+text = "About"
+flat = true
+alignment = 0
+
+[node name="about" type="VBoxContainer" parent="menu/menu_margin"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="title_container" type="HBoxContainer" parent="menu/menu_margin/about"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="title_icon" type="TextureRect" parent="menu/menu_margin/about/title_container"]
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("3_42ym1")
+expand_mode = 2
+
+[node name="title" type="Label" parent="menu/menu_margin/about/title_container"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 100
+text = "About Pocket Godot"
+
+[node name="about_margin" type="MarginContainer" parent="menu/menu_margin/about"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="about_menu" type="VBoxContainer" parent="menu/menu_margin/about/about_margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="about_text" type="RichTextLabel" parent="menu/menu_margin/about/about_margin/about_menu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+text = "Pocket Godot is a showcase project demonstrating three distinct player controllers for touch-based Godot games.
+It's designed to inspire and assist developers in creating engaging touch-based experiences.
+
+For a detailed explanation and visual demonstration, please watch the YouTube video [Video Title] on the Lukky youtube channel.
+
+Feel free to use all assets and code from this project for any purpose, including commercial use.
+
+Happy coding!"
+fit_content = true
+autowrap_mode = 2
+
+[node name="back_button" type="Button" parent="menu/menu_margin/about/about_margin/about_menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 55
+text = "back"
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="credit" type="Label" parent="menu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1112.0
+offset_top = -37.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_5uuh1")
+theme_override_font_sizes/font_size = 30
+text = "By Lukky "
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[connection signal="pressed" from="menu/menu_margin/main_menu/button_list_margin/button_list/fps_demo_button" to="menu" method="_on_fps_demo_button_pressed"]
+[connection signal="pressed" from="menu/menu_margin/main_menu/button_list_margin/button_list/tp_demo_button" to="menu" method="_on_tp_demo_button_pressed"]
+[connection signal="pressed" from="menu/menu_margin/main_menu/button_list_margin/button_list/td_demo_button" to="menu" method="_on_td_demo_button_pressed"]
+[connection signal="pressed" from="menu/menu_margin/main_menu/button_list_margin/button_list/about_button" to="menu" method="_on_about_button_pressed"]
+[connection signal="pressed" from="menu/menu_margin/about/about_margin/about_menu/back_button" to="menu" method="_on_back_button_pressed"]

@@ -1,0 +1,10 @@
+res://resources/materials/grey_grid_triplanar.tres::1178d1cf81d1dd43b43fd6f713123220::1724660843::res://.godot/exported/133200997/export-b68873f366a32024496eb43073863163-grey_grid_triplanar.res
+res://scenes/demos/first_person_demo.tscn::a965998149b65c2b551818d922baaa08::1724678879::res://.godot/exported/133200997/export-ce3e2920f3b64056b94f3b8a3bc020f9-first_person_demo.scn
+res://scenes/demos/third_person_demo.tscn::e322dcd41e31052b2a6bc32427678f31::1724678879::res://.godot/exported/133200997/export-7c5663b4c9cba7fd840f54a3583e1b81-third_person_demo.scn
+res://scenes/demos/top_down_demo.tscn::1f5a33df2c54d716de9b24071413b5b9::1724678879::res://.godot/exported/133200997/export-1a8010beab1e109161eca2bc6cdc02be-top_down_demo.scn
+res://scenes/menus/main_menu.tscn::70df6a513a145266866ae8de7d9ad522::1724678879::res://.godot/exported/133200997/export-f47f7d670953862d9d781ab785fd547c-main_menu.scn
+res://resources/materials/white_grid_triplanar.tres::8eca46bb3112e4918446e0e5087592d7::1724660843::res://.godot/exported/133200997/export-374e22b8b460b9bf48cbf41bde1acc85-white_grid_triplanar.res
+res://scenes/controller_layouts/joystick_touch_pad.tscn::f1f3349c50cf50a274658b2dd6bd992e::1724666622::res://.godot/exported/133200997/export-9646e79312f1e671b171fae27073052b-joystick_touch_pad.scn
+res://scenes/demos/top_down_spells/spell_a.tscn::1a10a20ace06cb8d5a17ddee09075ab4::1724678880::res://.godot/exported/133200997/export-b7e4003a138b53c0111bf25b296f2dc0-spell_a.scn
+res://scenes/demos/top_down_spells/spell_b.tscn::70cb2c30360fdbb094fa98f6f6803cab::1724678880::res://.godot/exported/133200997/export-c61cee9a9ada737513973bfda9c18fd1-spell_b.scn
+res://scenes/demos/demo_stage.tscn::05f7cc2940994529675baf065cf9804d::1724678879::res://.godot/exported/133200997/export-2cf4113f292540522e19c8d9d9279e9e-demo_stage.scn

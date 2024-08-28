@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv5skii5pttai"]
+
+[ext_resource type="Script" path="res://scripts/spells/spell_a.gd" id="1_ivycu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u7a67"]
+top_radius = 0.3
+bottom_radius = 0.0
+height = 0.4
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_flwfk"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.7
+cap_bottom = false
+
+[node name="spell_a" type="Node3D"]
+script = ExtResource("1_ivycu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1)
+mesh = SubResource("CylinderMesh_u7a67")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999999, 0.00124367, -0.000100992, -9.95101e-05, -0.00116999, -0.999999, -0.00124379, 0.999999, -0.00116986, 0, 0, -0.484585)
+mesh = SubResource("CylinderMesh_flwfk")
+skeleton = NodePath("../..")

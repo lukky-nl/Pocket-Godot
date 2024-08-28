@@ -1,0 +1,284 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8mxteosajyn7"]
+
+[ext_resource type="Material" uid="uid://l02qvns7cvjq" path="res://resources/materials/grey_grid_triplanar.tres" id="1_nhkx4"]
+[ext_resource type="PackedScene" uid="uid://5wi7u7pgosv5" path="res://assets/models/world_border/world_border.glb" id="2_h2eqe"]
+[ext_resource type="Material" uid="uid://bsemp2bquem6w" path="res://resources/materials/white_grid_triplanar.tres" id="3_uimi4"]
+[ext_resource type="Texture2D" uid="uid://d2fty6w48mh25" path="res://assets/textures/grids/Orange/texture_02.png" id="4_nskoc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1bhw"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wadr8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4i4qk"]
+material = SubResource("StandardMaterial3D_wadr8")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spvsy"]
+albedo_color = Color(0.403977, 0.385771, 0.372345, 1)
+roughness = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkvd4"]
+size = Vector3(100, 40, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snrjg"]
+albedo_texture = ExtResource("4_nskoc")
+
+[node name="stage" type="Node3D"]
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_v1bhw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("1_nhkx4")
+mesh = SubResource("BoxMesh_4i4qk")
+
+[node name="walls" type="StaticBody3D" parent="."]
+
+[node name="world_border" parent="walls" instance=ExtResource("2_h2eqe")]
+
+[node name="Cube_030" parent="walls/world_border" index="0"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_031" parent="walls/world_border" index="1"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_001" parent="walls/world_border" index="2"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_002" parent="walls/world_border" index="3"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_003" parent="walls/world_border" index="4"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_004" parent="walls/world_border" index="5"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_005" parent="walls/world_border" index="6"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_006" parent="walls/world_border" index="7"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_007" parent="walls/world_border" index="8"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_008" parent="walls/world_border" index="9"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_009" parent="walls/world_border" index="10"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_010" parent="walls/world_border" index="11"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_011" parent="walls/world_border" index="12"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_012" parent="walls/world_border" index="13"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_013" parent="walls/world_border" index="14"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_014" parent="walls/world_border" index="15"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_015" parent="walls/world_border" index="16"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_016" parent="walls/world_border" index="17"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_017" parent="walls/world_border" index="18"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_018" parent="walls/world_border" index="19"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_019" parent="walls/world_border" index="20"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_020" parent="walls/world_border" index="21"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_021" parent="walls/world_border" index="22"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_022" parent="walls/world_border" index="23"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_023" parent="walls/world_border" index="24"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_024" parent="walls/world_border" index="25"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_025" parent="walls/world_border" index="26"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_026" parent="walls/world_border" index="27"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_027" parent="walls/world_border" index="28"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_028" parent="walls/world_border" index="29"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_029" parent="walls/world_border" index="30"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_032" parent="walls/world_border" index="31"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_033" parent="walls/world_border" index="32"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_034" parent="walls/world_border" index="33"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_035" parent="walls/world_border" index="34"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_036" parent="walls/world_border" index="35"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_037" parent="walls/world_border" index="36"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_038" parent="walls/world_border" index="37"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_039" parent="walls/world_border" index="38"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="Cube_040" parent="walls/world_border" index="39"]
+surface_material_override/0 = ExtResource("1_nhkx4")
+surface_material_override/2 = ExtResource("3_uimi4")
+surface_material_override/3 = SubResource("StandardMaterial3D_spvsy")
+
+[node name="south_wall" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 50.5)
+shape = SubResource("BoxShape3D_rkvd4")
+
+[node name="west_wall" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -50.5, 2, -2.20743e-06)
+shape = SubResource("BoxShape3D_rkvd4")
+
+[node name="north_wall" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -50.5)
+shape = SubResource("BoxShape3D_rkvd4")
+
+[node name="east_wall" type="CollisionShape3D" parent="walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50.5, 2, 2.20743e-06)
+shape = SubResource("BoxShape3D_rkvd4")
+
+[node name="boxes" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+use_collision = true
+material = SubResource("StandardMaterial3D_snrjg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 5)
+use_collision = true
+material = SubResource("StandardMaterial3D_snrjg")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="boxes"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, -5)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_snrjg")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="boxes"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 1, 5)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_snrjg")
+
+[editable path="walls/world_border"]

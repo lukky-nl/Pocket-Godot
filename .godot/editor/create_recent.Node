@@ -1,0 +1,15 @@
+CharacterBody3D
+Node3D
+MeshInstance3D
+CSGBox3D
+CollisionShape3D
+StaticBody3D
+RayCast3D
+Control
+TouchScreenButton
+TextureRect
+Sprite2D
+Label
+TextureButton
+Button
+Camera3D

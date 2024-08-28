@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctjw0xvyaf7c0"]
+
+[ext_resource type="Script" path="res://scripts/spells/spell_b.gd" id="1_kla1x"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_lupgj"]
+inner_radius = 0.573
+
+[node name="spell_a" type="Node3D"]
+script = ExtResource("1_kla1x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_lupgj")
+skeleton = NodePath("../..")

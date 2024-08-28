@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://curo1kpfi8fsa"]
+
+[ext_resource type="Material" uid="uid://l02qvns7cvjq" path="res://resources/materials/grey_grid_triplanar.tres" id="1_xagqw"]
+[ext_resource type="Script" path="res://scripts/players/top_down_player.gd" id="2_bu3rj"]
+[ext_resource type="Texture2D" uid="uid://bft8nqp8ycot1" path="res://assets/textures/grids/Orange/texture_05.png" id="3_a8wx8"]
+[ext_resource type="Script" path="res://scripts/controls/joystick_touch_pad.gd" id="4_g32cl"]
+[ext_resource type="Texture2D" uid="uid://ded2m23ho7b2r" path="res://assets/icons/circle_medium.png" id="5_5m7w2"]
+[ext_resource type="Texture2D" uid="uid://csiqp25x3jmwm" path="res://assets/icons/circle_big.png" id="6_6trgj"]
+[ext_resource type="Texture2D" uid="uid://cqft4fr8q6yku" path="res://assets/icons/home.png" id="7_sf7e5"]
+[ext_resource type="Script" path="res://scripts/menu/home_button.gd" id="8_cmidx"]
+[ext_resource type="Script" path="res://scripts/controls/touch_screen_button_position.gd" id="9_7xmkc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vuemu"]
+sky_top_color = Color(0.361584, 0.562306, 0.817912, 1)
+sky_horizon_color = Color(0.255549, 0.565391, 0.815539, 1)
+ground_bottom_color = Color(0.128949, 0.368382, 0.554731, 1)
+ground_horizon_color = Color(0.255549, 0.565391, 0.815539, 1)
+
+[sub_resource type="Sky" id="Sky_cfiyk"]
+sky_material = SubResource("ProceduralSkyMaterial_vuemu")
+
+[sub_resource type="Environment" id="Environment_4ryma"]
+background_mode = 2
+sky = SubResource("Sky_cfiyk")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1bhw"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wadr8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4i4qk"]
+material = SubResource("StandardMaterial3D_wadr8")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3h53c"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1fp28"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wcb0"]
+albedo_texture = ExtResource("3_a8wx8")
+
+[node name="world" type="Node3D"]
+
+[node name="env" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_4ryma")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="floor" type="StaticBody3D" parent="stage"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_v1bhw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = ExtResource("1_xagqw")
+mesh = SubResource("BoxMesh_4i4qk")
+
+[node name="objects" type="Node" parent="."]
+
+[node name="player" type="CharacterBody3D" parent="objects" node_paths=PackedStringArray("joystick_touch_pad")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+script = ExtResource("2_bu3rj")
+joystick_touch_pad = NodePath("../../ui/joystick_touch_pad")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3h53c")
+
+[node name="camera_point" type="Node3D" parent="objects/player"]
+
+[node name="camera" type="Camera3D" parent="objects/player/camera_point"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 9.0621, 7.61983)
+fov = 41.0
+
+[node name="player_model" type="MeshInstance3D" parent="objects/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_1fp28")
+surface_material_override/0 = SubResource("StandardMaterial3D_2wcb0")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="joystick_touch_pad" type="Control" parent="ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_g32cl")
+
+[node name="handle" type="TextureRect" parent="ui/joystick_touch_pad"]
+visible = false
+modulate = Color(1, 1, 1, 0.576471)
+layout_mode = 0
+texture = ExtResource("5_5m7w2")
+expand_mode = 1
+
+[node name="base" type="TextureRect" parent="ui/joystick_touch_pad"]
+visible = false
+modulate = Color(1, 1, 1, 0.313726)
+layout_mode = 0
+texture = ExtResource("6_6trgj")
+expand_mode = 1
+
+[node name="home_button" type="TextureButton" parent="ui"]
+modulate = Color(1, 1, 1, 0.454902)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture_normal = ExtResource("7_sf7e5")
+script = ExtResource("8_cmidx")
+
+[node name="right_side_buttons" type="Control" parent="ui"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="jump_button" type="TouchScreenButton" parent="ui/right_side_buttons"]
+modulate = Color(1, 1, 1, 0.298039)
+position = Vector2(-155, -142)
+scale = Vector2(0.464844, 0.464844)
+texture_normal = ExtResource("5_5m7w2")
+script = ExtResource("9_7xmkc")
+right_offset = 100
+
+[connection signal="pressed" from="ui/right_side_buttons/jump_button" to="objects/player" method="on_jump_button_pressed"]
