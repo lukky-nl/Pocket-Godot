@@ -10,7 +10,7 @@ extends Control
 
 # Joystick finger index
 # In order to support multitouch we need to keep track the index or ID of the fingers on screen
-var joystick_finger_index = 0
+var joystick_finger_index = null
 
 # Joystick ui size variables these are set in the _ready function
 var joystick_starting_size: float
@@ -18,7 +18,7 @@ var joystick_handle_starting_size: float
 
 # Touch pad finger index
 # In order to support multitouch we need to keep track the index or ID of the fingers on screen
-var touch_pad_finger_index = 0
+var touch_pad_finger_index = null
 
 # This vector keeps track of the last position on the touch pad
 # The diffrence between the last position and the current position on the touchpad is our touch pad output
